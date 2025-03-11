@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca de Seletores CSS</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      background: linear-gradient(to right, #000000, #1f1e1e);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #000000;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    .selector-section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .selector-title {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .selector-code {
+      background-color: #1e1e1e !important;
+      color: #e0e0e0;
+      padding: 15px !important;
+      border-radius: 5px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      line-height: 1.4;
+      overflow-x: auto;
+    }
+
+    .selector-code .property {
+      color: #9cdcfe;
+    }
+
+    .selector-code .value {
+      color: #ce9178;
+    }
+
+    .selector-code .selector {
+      color: #d7ba7d;
+    }
+
+    .selector-code .punctuation {
+      color: #d4d4d4;
+    }
+
+    .selector-example {
+      padding: 15px;
+      background-color: white;
+      border: 1px dashed #ccc;
+      margin-bottom: 15px;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    /* Exemplos para seletor simples */
+    .simples {
+      color: blue;
+      font-weight: bold;
+    }
+
+    /* Exemplos para seletores múltiplos */
+    .multiplo-1,
+    .multiplo-2 {
+      background-color: #ffd700;
+      padding: 5px;
+    }
+
+    /* Exemplos para seletores descendentes */
+    .pai .filho {
+      border: 2px solid green;
+      padding: 5px;
+    }
+
+    /* Exemplos para seletores filhos diretos */
+    .pai-direto>.filho-direto {
+      border: 2px dashed red;
+      padding: 5px;
+    }
+
+    /* Exemplos para seletores adjacentes */
+    .adjacente+p {
+      font-style: italic;
+      color: purple;
+    }
+
+    /* Exemplos para seletores irmãos */
+    .irmao~p {
+      text-decoration: underline;
+      color: teal;
+    }
+
+    /* Exemplos para pseudoclasses */
+    .hover:hover {
+      background-color: #ff6b6b;
+      cursor: pointer;
+    }
+
+    .lista li:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+
+    .lista li:first-child {
+      font-weight: bold;
+      color: #3498db;
+    }
+
+    /* Exemplos para pseudoelementos */
+    .pseudo::before {
+      content: "🔹 ";
+      color: blue;
+    }
+
+    .pseudo::after {
+      content: " 🔹";
+      color: blue;
+    }
+
+    /* Exemplos para seletores de atributo */
+    [data-tipo] {
+      border-bottom: 1px dotted grey;
+    }
+
+    [data-tipo="importante"] {
+      font-weight: bold;
+      color: red;
+    }
+
+    /* Seletores adicionais */
+    #universal-example * {
+      border: 1px dotted #ccc;
+      margin: 5px;
+      padding: 3px;
+    }
+
+    #identificador-unico {
+      background-color: #005691;
+      color: white;
+      padding: 5px;
+    }
+
+    strong {
+      color: crimson;
+    }
+
+    [data-comeca^="inicio"] {
+      color: orange;
+    }
+
+    [data-termina$="fim"] {
+      color: purple;
+    }
+
+    [data-contem*="meio"] {
+      text-decoration: underline;
+    }
+
+    [data-palavra~="especial"] {
+      font-weight: bold;
+    }
+
+    [data-idioma|="pt"] {
+      background-color: #ffecb3;
+    }
+
+    input:focus {
+      border: 2px solid #3498db;
+      outline: none;
+    }
+
+    input:disabled {
+      background-color: #f1f1f1;
+      cursor: not-allowed;
+    }
+
+    input[type="checkbox"]:checked+label {
+      color: green;
+    }
+
+    input:valid {
+      border-color: green;
+    }
+
+    input:invalid {
+      border-color: red;
+    }
+
+    .estrutural p:last-child {
+      color: orange;
+    }
+
+    .estrutural p:only-child {
+      font-weight: bold;
+      background-color: #e8f4f8;
+    }
+
+    .estrutural div:empty {
+      height: 20px;
+      background-color: #ffcdd2;
+    }
+
+    .estrutural p:not(.excluir) {
+      text-decoration: underline;
+    }
+
+    .primeira-letra::first-letter {
+      font-size: 200%;
+      color: #e74c3c;
+    }
+
+    .primeira-linha::first-line {
+      font-style: italic;
+      color: blue;
+    }
+
+    .selecao::selection {
+      background-color: yellow;
+      color: black;
+    }
+
+    input::placeholder {
+      color: #888;
+      font-style: italic;
+    }
+
+    :is(h1, h2, h3):not(h1.selector-title) {
+      border-bottom: 1px solid #ddd;
+    }
+
+    :where(.aviso, .erro) {
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .teste-has:has(.erro) {
+      border: 2px solid red;
+    }
+
+    /* Estilo para visualização de cores */
+    .color-preview {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin: 0 5px;
+      border: 1px solid #ccc;
+      vertical-align: middle;
+      border-radius: 3px;
+    }
+
+    /* Estilos para contexto */
+    .context {
+      background-color: #1d1d1d;
+      border-left: 3px solid #3498db;
+      color: #e0e0e0;
+      padding: 10px 15px;
+      margin: 10px 0;
+      font-size: 14px;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .context code {
+      background-color: #2d2d2d;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Biblioteca de Seletores CSS</h1>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletor de Classe Simples</div>
+      
+      <div class="context">
+        Os seletores de classe são fundamentais no CSS. Eles permitem aplicar estilos a múltiplos elementos que compartilham a mesma classe, facilitando a manutenção e consistência do design.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">.simples</span> <span class="punctuation">{</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">blue</span><span class="color-preview" style="background-color: blue;"></span><span class="punctuation">;</span>
+          <span class="property">font-weight</span><span class="punctuation">:</span> <span class="value">bold</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Aplica estilos a elementos com uma classe específica.</div>
+      <div class="selector-example">
+        <span class="simples">Este texto tem a classe "simples"</span>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletores Múltiplos</div>
+      
+      <div class="context">
+        Os seletores múltiplos economizam código ao aplicar os mesmos estilos a diferentes elementos. Uma prática essencial para manter seu CSS enxuto e eficiente.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">.multiplo-1</span><span class="punctuation">,</span> <span class="selector">.multiplo-2</span> <span class="punctuation">{</span>
+          <span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#ffd700</span><span class="color-preview" style="background-color: #ffd700;"></span><span class="punctuation">;</span>
+          <span class="property">padding</span><span class="punctuation">:</span> <span class="value">5px</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Aplica os mesmos estilos a diferentes classes.</div>
+      <div class="selector-example">
+        <div class="multiplo-1">Este elemento tem a classe "multiplo-1"</div>
+        <div class="multiplo-2">Este elemento tem a classe "multiplo-2"</div>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletor Descendente</div>
+      
+      <div class="context">
+        Os seletores descendentes são cruciais para aplicar estilos a elementos dentro de uma estrutura específica, permitindo maior especificidade sem adicionar classes extras.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">.pai .filho</span> <span class="punctuation">{</span>
+          <span class="property">border</span><span class="punctuation">:</span> <span class="value">2px solid green</span><span class="color-preview" style="background-color: green;"></span><span class="punctuation">;</span>
+          <span class="property">padding</span><span class="punctuation">:</span> <span class="value">5px</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Seleciona elementos que são descendentes de outro elemento específico.</div>
+      <div class="selector-example">
+        <div class="pai">
+          Elemento pai
+          <div class="filho">Este é um elemento filho</div>
+          <div>Este é outro filho sem a classe "filho"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletor de Filho Direto</div>
+      
+      <div class="context">
+        Diferente do seletor descendente, este seletor garante precisão ao atingir apenas filhos diretos, evitando efeitos cascata indesejados em estruturas HTML complexas.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">.pai-direto > .filho-direto</span> <span class="punctuation">{</span>
+          <span class="property">border</span><span class="punctuation">:</span> <span class="value">2px dashed red</span><span class="color-preview" style="background-color: red;"></span><span class="punctuation">;</span>
+          <span class="property">padding</span><span class="punctuation">:</span> <span class="value">5px</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Seleciona elementos que são filhos diretos de outro elemento específico.</div>
+      <div class="selector-example">
+        <div class="pai-direto">
+          Elemento pai direto
+          <div class="filho-direto">Este é um filho direto</div>
+          <div>
+            <div class="filho-direto">Este NÃO será selecionado pois não é filho direto</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletor Adjacente</div>
+      
+      <div class="context">
+        O seletor adjacente é ideal para criar relações visuais entre elementos sequenciais sem precisar adicionar classes extras, muito útil em listas e formulários.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">.adjacente + p</span> <span class="punctuation">{</span>
+          <span class="property">font-style</span><span class="punctuation">:</span> <span class="value">italic</span><span class="punctuation">;</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">purple</span><span class="color-preview" style="background-color: purple;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Seleciona o elemento que vem imediatamente após outro específico.</div>
+      <div class="selector-example">
+        <div class="adjacente">Elemento com classe "adjacente"</div>
+        <p>Este parágrafo é adjacente ao elemento acima e será estilizado.</p>
+        <p>Este parágrafo não é adjacente e não terá o estilo aplicado.</p>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletor Irmão Geral</div>
+      
+      <div class="context">
+        Diferente do seletor adjacente, este afeta todos os elementos irmãos subsequentes, criando um efeito cascata em elementos do mesmo nível na hierarquia.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">.irmao ~ p</span> <span class="punctuation">{</span>
+          <span class="property">text-decoration</span><span class="punctuation">:</span> <span class="value">underline</span><span class="punctuation">;</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">teal</span><span class="color-preview" style="background-color: teal;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Seleciona todos os elementos irmãos que vêm após um elemento específico.</div>
+      <div class="selector-example">
+        <div class="irmao">Elemento com classe "irmao"</div>
+        <p>Este parágrafo será estilizado.</p>
+        <div>Este é um div e não será afetado pelo seletor</div>
+        <p>Este parágrafo também será estilizado.</p>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Pseudoclasses</div>
+      
+      <div class="context">
+        As pseudoclasses permitem aplicar estilos baseados em estados ou posições que não podem ser capturados por seletores convencionais, tornando interfaces mais responsivas.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">.hover:hover</span> <span class="punctuation">{</span> 
+          <span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#ff6b6b</span><span class="color-preview" style="background-color: #ff6b6b;"></span><span class="punctuation">;</span>
+          <span class="property">cursor</span><span class="punctuation">:</span> <span class="value">pointer</span><span class="punctuation">;</span> 
+        <span class="punctuation">}</span>
+        <span class="selector">.lista li:nth-child(odd)</span> <span class="punctuation">{</span> 
+          <span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#f2f2f2</span><span class="color-preview" style="background-color: #f2f2f2;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">.lista li:first-child</span> <span class="punctuation">{</span> 
+          <span class="property">font-weight</span><span class="punctuation">:</span> <span class="value">bold</span><span class="punctuation">;</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">#3498db</span><span class="color-preview" style="background-color: #3498db;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Estilos aplicados em estados específicos de elementos.</div>
+      <div class="selector-example">
+        <div class="hover" style="padding: 10px; border: 1px solid #ccc;">Passe o mouse sobre este elemento</div>
+        <br>
+        <ul class="lista">
+          <li>Item 1 (primeiro filho)</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+          <li>Item 5</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Pseudoelementos</div>
+      
+      <div class="context">
+        Os pseudoelementos permitem estilizar partes específicas dos elementos ou criar conteúdo decorativo sem adicionar marcação HTML extra, mantendo uma separação clara entre conteúdo e apresentação.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">.pseudo::before</span> <span class="punctuation">{</span>
+          <span class="property">content</span><span class="punctuation">:</span> <span class="value">"🔹 "</span><span class="punctuation">;</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">blue</span><span class="color-preview" style="background-color: blue;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">.pseudo::after</span> <span class="punctuation">{</span>
+          <span class="property">content</span><span class="punctuation">:</span> <span class="value">" 🔹"</span><span class="punctuation">;</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">blue</span><span class="color-preview" style="background-color: blue;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Permite criar elementos que não existem no HTML.</div>
+      <div class="selector-example">
+        <div class="pseudo">Este texto tem pseudoelementos antes e depois</div>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletores de Atributo</div>
+      
+      <div class="context">
+        Os seletores de atributo oferecem poderosa flexibilidade ao permitir selecionar elementos com base em seus atributos. Extremamente úteis para estilizar elementos HTML5 sem adicionar classes extras.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">[data-tipo]</span> <span class="punctuation">{</span>
+          <span class="property">border-bottom</span><span class="punctuation">:</span> <span class="value">1px dotted grey</span><span class="color-preview" style="background-color: grey;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">[data-tipo="importante"]</span> <span class="punctuation">{</span>
+          <span class="property">font-weight</span><span class="punctuation">:</span> <span class="value">bold</span><span class="punctuation">;</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">red</span><span class="color-preview" style="background-color: red;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Seleciona elementos com base em seus atributos.</div>
+      <div class="selector-example">
+        <div data-tipo="normal">Este elemento tem data-tipo="normal"</div>
+        <div data-tipo="importante">Este elemento tem data-tipo="importante"</div>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletor Universal</div>
+      
+      <div class="context">
+        O seletor universal (*) é uma poderosa ferramenta que afeta todos os elementos. Frequentemente usado para resets CSS globais e para configurar características comuns em toda a página.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">*</span> <span class="punctuation">{</span>
+          <span class="property">border</span><span class="punctuation">:</span> <span class="value">1px dotted #ccc</span><span class="color-preview" style="background-color: #ccc;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Seleciona todos os elementos na página.</div>
+      <div class="selector-example" id="universal-example">
+        <div>Elemento div</div>
+        <p>Elemento parágrafo</p>
+        <span>Elemento span</span>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletor de ID</div>
+      
+      <div class="context">
+        Os seletores de ID são os mais específicos no CSS, destinados a elementos únicos em uma página. Úteis para componentes altamente específicos, mas devem ser usados com moderação para evitar especificidade excessiva.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">#identificador-unico</span> <span class="punctuation">{</span>
+          <span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#005691</span><span class="color-preview" style="background-color: #005691;"></span><span class="punctuation">;</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">white</span><span class="color-preview" style="background-color: white;"></span><span class="punctuation">;</span>
+          <span class="property">padding</span><span class="punctuation">:</span> <span class="value">5px</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Seleciona um elemento com o ID específico (deve ser único na página).</div>
+      <div class="selector-example">
+        <div id="identificador-unico">Este elemento tem um ID único</div>
+        <div>Este não tem ID</div>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletor de Tipo/Tag</div>
+      
+      <div class="context">
+        Os seletores de tipo são a forma mais básica de seleção, visando elementos HTML específicos. Ideais para estilos de reset ou definições base que afetam todos os elementos de um tipo particular.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">strong</span> <span class="punctuation">{</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">crimson</span><span class="color-preview" style="background-color: crimson;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Seleciona todos os elementos de um tipo/tag específico.</div>
+      <div class="selector-example">
+        Este é um texto normal com <strong>texto em negrito</strong> que será estilizado.
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletores de Atributo Avançados</div>
+      
+      <div class="context">
+        Estes seletores avançados proporcionam um controle refinado sobre elementos com base em padrões de texto em seus atributos, permitindo seleções poderosas sem classes ou IDs adicionais.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">[data-comeca^="inicio"]</span> <span class="punctuation">{</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">orange</span><span class="color-preview" style="background-color: orange;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">[data-termina$="fim"]</span> <span class="punctuation">{</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">purple</span><span class="color-preview" style="background-color: purple;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">[data-contem*="meio"]</span> <span class="punctuation">{</span>
+          <span class="property">text-decoration</span><span class="punctuation">:</span> <span class="value">underline</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">[data-palavra~="especial"]</span> <span class="punctuation">{</span>
+          <span class="property">font-weight</span><span class="punctuation">:</span> <span class="value">bold</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">[data-idioma|="pt"]</span> <span class="punctuation">{</span>
+          <span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#ffecb3</span><span class="color-preview" style="background-color: #ffecb3;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Selecionam elementos com base em padrões específicos nos valores dos atributos.</div>
+      <div class="selector-example">
+        <div data-comeca="inicio-do-texto">Começa com "inicio"</div>
+        <div data-termina="texto-no-fim">Termina com "fim"</div>
+        <div data-contem="texto-meio-texto">Contém "meio"</div>
+        <div data-palavra="palavra especial outra">Contém a palavra "especial"</div>
+        <div data-idioma="pt-BR">Começa com "pt" seguido por hífen</div>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Pseudoclasses de Formulário</div>
+      
+      <div class="context">
+        As pseudoclasses de formulário são particularmente úteis para interfaces interativas. Elas permitem feedback visual instantâneo sem JavaScript, melhorando significativamente a usabilidade. Comum em validação de formulários e interfaces responsivas.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">input:focus</span> <span class="punctuation">{</span>
+          <span class="property">border</span><span class="punctuation">:</span> <span class="value">2px solid #3498db</span><span class="color-preview" style="background-color: #3498db;"></span><span class="punctuation">;</span>
+          <span class="property">outline</span><span class="punctuation">:</span> <span class="value">none</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">input:disabled</span> <span class="punctuation">{</span>
+          <span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#f1f1f1</span><span class="color-preview" style="background-color: #f1f1f1;"></span><span class="punctuation">;</span>
+          <span class="property">cursor</span><span class="punctuation">:</span> <span class="value">not-allowed</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      
+      <div class="description">Estilos aplicados a elementos de formulário em estados específicos.</div>
+      <div class="selector-example">
+        <input type="text" placeholder="Clique para ver o foco" style="margin: 5px; padding: 5px;"><br>
+        <input type="text" disabled value="Input desativado" style="margin: 5px; padding: 5px;">
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Pseudoclasses Estruturais</div>
+      
+      <div class="context">
+        As pseudoclasses estruturais permitem selecionar elementos com base na sua posição na estrutura do documento, facilitando a estilização de padrões repetitivos sem adicionar classes manualmente.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">.estrutural p:last-child</span> <span class="punctuation">{</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">orange</span><span class="color-preview" style="background-color: orange;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">.estrutural p:only-child</span> <span class="punctuation">{</span>
+          <span class="property">font-weight</span><span class="punctuation">:</span> <span class="value">bold</span><span class="punctuation">;</span>
+          <span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#e8f4f8</span><span class="color-preview" style="background-color: #e8f4f8;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">.estrutural div:empty</span> <span class="punctuation">{</span>
+          <span class="property">height</span><span class="punctuation">:</span> <span class="value">20px</span><span class="punctuation">;</span>
+          <span class="property">background-color</span><span class="punctuation">:</span> <span class="value">#ffcdd2</span><span class="color-preview" style="background-color: #ffcdd2;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">.estrutural p:not(.excluir)</span> <span class="punctuation">{</span>
+          <span class="property">text-decoration</span><span class="punctuation">:</span> <span class="value">underline</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Selecionam elementos com base em sua posição na estrutura do documento.</div>
+      <div class="selector-example">
+        <div class="estrutural">
+          <p>Primeiro parágrafo (com sublinhado)</p>
+          <p>Parágrafo do meio (com sublinhado)</p>
+          <p>Último parágrafo (laranja e sublinhado)</p>
+        </div>
+        <div class="estrutural">
+          <p>Único filho (negrito e fundo azul claro)</p>
+        </div>
+        <div class="estrutural">
+          <div class="empty"></div> <!-- Div vazio (fundo vermelho claro) -->
+          <p class="excluir">Este parágrafo NÃO tem sublinhado</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Pseudoelementos Adicionais</div>
+      
+      <div class="context">
+        Estes pseudoelementos avançados permitem estilizar partes específicas do conteúdo, como primeira letra ou linha, melhorando o design tipográfico sem alterar o HTML.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">.primeira-letra::first-letter</span> <span class="punctuation">{</span>
+          <span class="property">font-size</span><span class="punctuation">:</span> <span class="value">200%</span><span class="punctuation">;</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">#e74c3c</span><span class="color-preview" style="background-color: #e74c3c;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">.primeira-linha::first-line</span> <span class="punctuation">{</span>
+          <span class="property">font-style</span><span class="punctuation">:</span> <span class="value">italic</span><span class="punctuation">;</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">blue</span><span class="color-preview" style="background-color: blue;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">.selecao::selection</span> <span class="punctuation">{</span>
+          <span class="property">background-color</span><span class="punctuation">:</span> <span class="value">yellow</span><span class="color-preview" style="background-color: yellow;"></span><span class="punctuation">;</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">black</span><span class="color-preview" style="background-color: black;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">input::placeholder</span> <span class="punctuation">{</span>
+          <span class="property">color</span><span class="punctuation">:</span> <span class="value">#888</span><span class="color-preview" style="background-color: #888;"></span><span class="punctuation">;</span>
+          <span class="property">font-style</span><span class="punctuation">:</span> <span class="value">italic</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Permite estilizar partes específicas de elementos.</div>
+      <div class="selector-example">
+        <p class="primeira-letra">Este parágrafo tem a primeira letra estilizada em vermelho e maior.</p>
+        <p class="primeira-linha">Esta primeira linha está em itálico e azul.
+          Esta segunda linha não tem o mesmo estilo.</p>
+        <p class="selecao">Selecione este texto para ver o estilo de seleção!</p>
+        <input type="text" placeholder="Placeholder estilizado" style="margin: 5px; padding: 5px; width: 200px;">
+      </div>
+    </div>
+
+    <div class="selector-section">
+      <div class="selector-title">Seletores Funcionais Modernos</div>
+      
+      <div class="context">
+        Estes seletores funcionais modernos simplificam regras CSS complexas e reduzem repetição. Particularmente úteis para layouts responsivos e componentes dinâmicos em aplicações web modernas.
+      </div>
+      
+      <div class="selector-code">
+        <span class="selector">:is(h1, h2, h3)</span> <span class="punctuation">{</span>
+          <span class="property">border-bottom</span><span class="punctuation">:</span> <span class="value">1px solid #ddd</span><span class="color-preview" style="background-color: #ddd;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">:where(.aviso, .erro)</span> <span class="punctuation">{</span>
+          <span class="property">padding</span><span class="punctuation">:</span> <span class="value">10px</span><span class="punctuation">;</span>
+          <span class="property">border-radius</span><span class="punctuation">:</span> <span class="value">4px</span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+        <span class="selector">.container:has(.erro)</span> <span class="punctuation">{</span>
+          <span class="property">border</span><span class="punctuation">:</span> <span class="value">2px solid red</span><span class="color-preview" style="background-color: red;"></span><span class="punctuation">;</span>
+        <span class="punctuation">}</span>
+      </div>
+      <div class="description">Seletores funcionais mais recentes para simplificar e adicionar novas capacidades.</div>
+      <div class="selector-example">
+        <h3>Este título tem borda inferior (usando :is)</h3>
+        <div class="aviso" style="background-color: #fff3cd;">Este é um aviso (usando :where)</div>
+        <div class="teste-has">
+          <p>Sem borda vermelha</p>
+        </div>
+        <div class="teste-has">
+          <p class="erro">O contêiner tem borda vermelha quando contém elemento com classe 'erro' (:has)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
