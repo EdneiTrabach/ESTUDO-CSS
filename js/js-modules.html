@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca de JavaScript</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/code-highlight.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/examples.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Biblioteca de JavaScript</h1>
+    
+    <div id="modules-container">
+      <!-- Os exemplos de JavaScript serão injetados aqui via JavaScript -->
+      <div class="loading">Carregando módulos...</div>
+    </div>
+  </div>
+  
+  <!-- Template para cada seção de módulo -->
+  <template id="module-template">
+    <div class="module-section">
+      <div class="module-title"></div>
+      <div class="context"></div>
+      <div class="module-code"></div>
+      <div class="description"></div>
+      <div class="module-example"></div>
+    </div>
+  </template>
+  
+  <script src="js/modules.js"></script>
+</body>
+
+</html>

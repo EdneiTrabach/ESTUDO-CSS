@@ -1,38 +1,165 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biblioteca de Seletores CSS</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/code-highlight.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/examples.css">
+  <title>Biblioteca de Estudo Web</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      background: linear-gradient(to right, #000000, #1f1e1e);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #e0e0e0;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+    
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    .card-header {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .html-header {
+      background-color: #e44d26;
+    }
+    
+    .css-header {
+      background-color: #264de4;
+    }
+    
+    .js-header {
+      background-color: #f7df1e;
+    }
+    
+    .card-logo {
+      font-size: 100px;
+      color: white;
+    }
+    
+    .js-header .card-logo {
+      color: #000;
+    }
+    
+    .card-body {
+      padding: 20px;
+    }
+    
+    .card-title {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    
+    .card-text {
+      color: #666;
+      margin: 15px 0;
+    }
+    
+    .card-button {
+      display: inline-block;
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    
+    .html-button:hover {
+      background-color: #e44d26;
+    }
+    
+    .css-button:hover {
+      background-color: #264de4;
+    }
+    
+    .js-button:hover {
+      background-color: #f7df1e;
+      color: #000;
+    }
+  </style>
 </head>
-
 <body>
   <div class="container">
-    <h1>Biblioteca de Seletores CSS</h1>
+    <h1>Biblioteca de Estudo Web</h1>
     
-    <div id="selectors-container">
-      <!-- Os exemplos de seletores serão injetados aqui via JavaScript -->
-      <div class="loading">Carregando seletores...</div>
+    <div class="cards-container">
+      <!-- Card HTML -->
+      <div class="card">
+        <div class="card-header html-header">
+          <div class="card-logo">HTML</div>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">HTML</h2>
+          <p class="card-text">Explore elementos HTML, estruturas semânticas e boas práticas para construir páginas web eficientes.</p>
+          <a href="html/html-modules.html" class="card-button html-button">Ver Módulos</a>
+        </div>
+      </div>
+      
+      <!-- Card CSS -->
+      <div class="card">
+        <div class="card-header css-header">
+          <div class="card-logo">CSS</div>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">CSS</h2>
+          <p class="card-text">Descubra seletores, propriedades e técnicas de estilização para criar designs impressionantes.</p>
+          <a href="/css/css-selectors.html" class="card-button css-button">Ver Módulos</a>
+        </div>
+      </div>
+      
+      <!-- Card JavaScript -->
+      <div class="card">
+        <div class="card-header js-header">
+          <div class="card-logo">JS</div>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">JavaScript</h2>
+          <p class="card-text">Aprenda a programar e criar interatividade em suas páginas web com JavaScript.</p>
+          <a href="js/js-modules.html" class="card-button js-button">Ver Módulos</a>
+        </div>
+      </div>
     </div>
   </div>
-  
-  <!-- Template para cada seção de seletor -->
-  <template id="selector-template">
-    <div class="selector-section">
-      <div class="selector-title"></div>
-      <div class="context"></div>
-      <div class="selector-code"></div>
-      <div class="description"></div>
-      <div class="selector-example"></div>
-    </div>
-  </template>
-  
-  <script src="js/selectors.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "headings",
+    "title": "Cabeçalhos (h1-h6)",
+    "context": "Os elementos de cabeçalho implementam seis níveis de cabeçalhos de documentos, <h1> é o mais importante e <h6> é o menos importante. Um elemento de cabeçalho descreve brevemente o tópico da seção que introduz.",
+    "code": "<span class=\"tag\">&lt;h1&gt;</span>Título de Nível 1<span class=\"tag\">&lt;/h1&gt;</span><br><span class=\"tag\">&lt;h2&gt;</span>Título de Nível 2<span class=\"tag\">&lt;/h2&gt;</span><br><span class=\"tag\">&lt;h3&gt;</span>Título de Nível 3<span class=\"tag\">&lt;/h3&gt;</span>",
+    "description": "Elementos de cabeçalho são usados para definir a hierarquia de conteúdo e são importantes para a acessibilidade e SEO.",
+    "example": "<h1 style='margin: 10px 0; font-size: 2em;'>Título de Nível 1</h1><h2 style='margin: 10px 0; font-size: 1.5em;'>Título de Nível 2</h2><h3 style='margin: 10px 0; font-size: 1.17em;'>Título de Nível 3</h3>"
+  },
+  {
+    "id": "paragraph",
+    "title": "Parágrafos",
+    "context": "O elemento HTML <p> representa um parágrafo. Os parágrafos são geralmente representados em mídia visual como blocos de texto separados de outros blocos por espaços em branco.",
+    "code": "<span class=\"tag\">&lt;p&gt;</span>Este é um parágrafo de exemplo que mostra como o texto é formatado dentro de um elemento de parágrafo.<span class=\"tag\">&lt;/p&gt;</span>",
+    "description": "Elementos de parágrafo são blocos básicos de texto usados para organizar conteúdo escrito.",
+    "example": "<p>Este é um parágrafo de exemplo que mostra como o texto é formatado dentro de um elemento de parágrafo.</p>"
+  }
+]

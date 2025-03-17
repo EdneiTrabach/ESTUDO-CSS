@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca de Elementos HTML</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/code-highlight.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/examples.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Biblioteca de Elementos HTML</h1>
+    
+    <div id="elements-container">
+      <!-- Os exemplos de elementos serão injetados aqui via JavaScript -->
+      <div class="loading">Carregando elementos...</div>
+    </div>
+  </div>
+  
+  <!-- Template para cada seção de elemento -->
+  <template id="element-template">
+    <div class="element-section">
+      <div class="element-title"></div>
+      <div class="context"></div>
+      <div class="element-code"></div>
+      <div class="description"></div>
+      <div class="element-example"></div>
+    </div>
+  </template>
+  
+  <script src="js/elements.js"></script>
+</body>
+
+</html>

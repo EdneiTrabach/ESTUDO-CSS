@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca de Seletores CSS</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/code-highlight.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/examples.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Biblioteca de Seletores CSS</h1>
+    
+    <div id="selectors-container">
+      <!-- Os exemplos de seletores serão injetados aqui via JavaScript -->
+      <div class="loading">Carregando seletores...</div>
+    </div>
+  </div>
+  
+  <!-- Template para cada seção de seletor -->
+  <template id="selector-template">
+    <div class="selector-section">
+      <div class="selector-title"></div>
+      <div class="context"></div>
+      <div class="selector-code"></div>
+      <div class="description"></div>
+      <div class="selector-example"></div>
+    </div>
+  </template>
+  
+  <script src="js/selectors.js"></script>
+</body>
+
+</html>

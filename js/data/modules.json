@@ -1,0 +1,18 @@
+[
+  {
+    "id": "variables",
+    "title": "Variáveis em JavaScript",
+    "context": "Variáveis são contêineres para armazenar dados em JavaScript. As declarações modernas incluem let, const e var, cada uma com comportamentos diferentes de escopo e reatribuição.",
+    "code": "<span class=\"keyword\">const</span> <span class=\"variable\">nome</span> = <span class=\"string\">'Maria'</span>;<br><span class=\"keyword\">let</span> <span class=\"variable\">idade</span> = <span class=\"number\">25</span>;<br><span class=\"keyword\">var</span> <span class=\"variable\">cidade</span> = <span class=\"string\">'São Paulo'</span>;",
+    "description": "As variáveis let e const foram introduzidas no ES6. Use const para valores que não serão reatribuídos e let para valores que podem mudar.",
+    "example": "<div>Executando o código no console:<br><code>const nome = 'Maria';<br>let idade = 25;<br>console.log(`${nome} tem ${idade} anos`);</code><br>Resultado: <strong>Maria tem 25 anos</strong></div>"
+  },
+  {
+    "id": "functions",
+    "title": "Funções em JavaScript",
+    "context": "Funções são blocos de código reutilizáveis projetados para executar uma tarefa específica. Em JavaScript, temos várias formas de definir funções.",
+    "code": "<span class=\"comment\">// Função tradicional</span><br><span class=\"keyword\">function</span> <span class=\"function\">somar</span>(<span class=\"parameter\">a</span>, <span class=\"parameter\">b</span>) {<br>&nbsp;&nbsp;<span class=\"keyword\">return</span> a + b;<br>}<br><br><span class=\"comment\">// Arrow function</span><br><span class=\"keyword\">const</span> <span class=\"variable\">multiplicar</span> = (<span class=\"parameter\">a</span>, <span class=\"parameter\">b</span>) => {<br>&nbsp;&nbsp;<span class=\"keyword\">return</span> a * b;<br>};<br><br><span class=\"comment\">// Arrow function compacta</span><br><span class=\"keyword\">const</span> <span class=\"variable\">subtrair</span> = (<span class=\"parameter\">a</span>, <span class=\"parameter\">b</span>) => a - b;",
+    "description": "As arrow functions são uma sintaxe mais curta introduzida no ES6, com comportamentos diferentes em relação ao this em comparação com funções tradicionais.",
+    "example": "<div>Exemplos de uso:<br><code>console.log(somar(5, 3)); // 8<br>console.log(multiplicar(4, 2)); // 8<br>console.log(subtrair(10, 5)); // 5</code></div>"
+  }
+]
