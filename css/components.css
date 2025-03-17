@@ -1,0 +1,26 @@
+.selector-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.selector-title {
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.selector-example {
+  padding: 15px;
+  background-color: white;
+  border: 1px dashed #ccc;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}

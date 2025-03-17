@@ -1,0 +1,210 @@
+/* Exemplos para seletor simples */
+.simples {
+  color: blue;
+  font-weight: bold;
+}
+
+/* Exemplos para seletores múltiplos */
+.multiplo-1,
+.multiplo-2 {
+  background-color: #ffd700;
+  padding: 5px;
+}
+
+/* Exemplos para seletores descendentes */
+.pai .filho {
+  border: 2px solid green;
+  padding: 5px;
+}
+
+/* Exemplos para seletores filhos diretos */
+.pai-direto>.filho-direto {
+  border: 2px dashed red;
+  padding: 5px;
+}
+
+/* Exemplos para seletores adjacentes */
+.adjacente+p {
+  font-style: italic;
+  color: purple;
+}
+
+/* Exemplos para seletores irmãos */
+.irmao~p {
+  text-decoration: underline;
+  color: teal;
+}
+
+/* Exemplos para pseudoclasses */
+.hover:hover {
+  background-color: #ff6b6b;
+  cursor: pointer;
+}
+
+.lista li:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.lista li:first-child {
+  font-weight: bold;
+  color: #3498db;
+}
+
+/* Exemplos para pseudoelementos */
+.pseudo::before {
+  content: "🔹 ";
+  color: blue;
+}
+
+.pseudo::after {
+  content: " 🔹";
+  color: blue;
+}
+
+/* Exemplos para seletores de atributo */
+[data-tipo] {
+  border-bottom: 1px dotted grey;
+}
+
+[data-tipo="importante"] {
+  font-weight: bold;
+  color: red;
+}
+
+/* Seletores adicionais */
+#universal-example * {
+  border: 1px dotted #ccc;
+  margin: 5px;
+  padding: 3px;
+}
+
+#identificador-unico {
+  background-color: #005691;
+  color: white;
+  padding: 5px;
+}
+
+strong {
+  color: crimson;
+}
+
+[data-comeca^="inicio"] {
+  color: orange;
+}
+
+[data-termina$="fim"] {
+  color: purple;
+}
+
+[data-contem*="meio"] {
+  text-decoration: underline;
+}
+
+[data-palavra~="especial"] {
+  font-weight: bold;
+}
+
+[data-idioma|="pt"] {
+  background-color: #ffecb3;
+}
+
+input:focus {
+  border: 2px solid #3498db;
+  outline: none;
+}
+
+input:disabled {
+  background-color: #f1f1f1;
+  cursor: not-allowed;
+}
+
+input[type="checkbox"]:checked+label {
+  color: green;
+}
+
+input:valid {
+  border-color: green;
+}
+
+input:invalid {
+  border-color: red;
+}
+
+.estrutural p:last-child {
+  color: orange;
+}
+
+.estrutural p:only-child {
+  font-weight: bold;
+  background-color: #e8f4f8;
+}
+
+.estrutural div:empty {
+  height: 20px;
+  background-color: #ffcdd2;
+}
+
+.estrutural p:not(.excluir) {
+  text-decoration: underline;
+}
+
+.primeira-letra::first-letter {
+  font-size: 200%;
+  color: #e74c3c;
+}
+
+.primeira-linha::first-line {
+  font-style: italic;
+  color: blue;
+}
+
+.selecao::selection {
+  background-color: yellow;
+  color: black;
+}
+
+input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+:is(h1, h2, h3):not(h1.selector-title) {
+  border-bottom: 1px solid #ddd;
+}
+
+:where(.aviso, .erro) {
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.teste-has:has(.erro) {
+  border: 2px solid red;
+}
+
+/* Estilo para visualização de cores */
+.color-preview {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+  border-radius: 3px;
+}
+
+/* Estilos para contexto */
+.context {
+  background-color: #1d1d1d;
+  border-left: 3px solid #3498db;
+  color: #e0e0e0;
+  padding: 10px 15px;
+  margin: 10px 0;
+  font-size: 14px;
+  border-radius: 0 5px 5px 0;
+}
+
+.context code {
+  background-color: #2d2d2d;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
